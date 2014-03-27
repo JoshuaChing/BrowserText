@@ -21,11 +21,17 @@ public class Servlet extends HttpServlet{
 		resp.setContentType("text/html");
 		resp.setStatus(HttpServletResponse.SC_OK);
 		PrintWriter out=resp.getWriter();
-		out.println("<html>"+
-				 "<title>Simple Form</title>" +
-	                "<body>" +
-	                "<h1>Hello jControl</h1>"+
-	                "</body>" +
-	                "</html>");
+		out.println("<html style=\"background-color:#2c3e50\">");
+		out.println("<head>");
+		out.println("<title>jControl</title");
+		out.println("</head>");
+		out.println("<body style=\"color:#FFFFFF;font-family:Verdana\">");
+		out.println("<center>");
+		out.println("<h1>Welcome to jControl</h1>");
+		out.println("<p>This application does nothing at the moment.</p>");
+		out.println("</center>");
+		out.println("</body>");
+		out.println("</html>");
 	    }
+	
 }

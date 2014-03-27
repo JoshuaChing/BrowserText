@@ -36,7 +36,7 @@ public class HttpServer {
 		server.setHandler(handler);
 	}
 	
-	//run thread in separate thread
+	//run server in separate thread
 	public void start(){
 		new Thread(){
 			public void run(){
@@ -60,7 +60,7 @@ public class HttpServer {
 	
 	//get ip address of device
 	@SuppressWarnings("deprecation")
-	public String getIPAddress(){
+	public String getAddress(){
 		ConnectivityManager con;
 		con=(ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		
@@ -71,7 +71,7 @@ public class HttpServer {
 			
 			int IP=wifi.getConnectionInfo().getIpAddress();
 			
-			return Formatter.formatIpAddress(IP);
+			return "http://"+Formatter.formatIpAddress(IP)+":"+port;
 		}
 		else{
 			return "You are not connected to WIFI";

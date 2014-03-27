@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 		server = new HttpServer(MainActivity.this);
 		server.start();
 		
-		IPtext.setText("http://"+server.getIPAddress()+":"+server.getPort());
+		IPtext.setText(server.getAddress());
 	}
 
 	@Override
