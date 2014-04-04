@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
     android:background="@color/darkGreen">
-
+    
     <TextView
         android:id="@+id/instructions"
         android:layout_width="wrap_content"
@@ -29,5 +29,16 @@
         android:textColor="@color/white"
         android:text="@string/IP"
         android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp"
+        android:text="@string/title"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 
 </RelativeLayout>
