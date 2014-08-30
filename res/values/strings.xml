@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Quick Text</string>
+    <string name="app_name">Browser Text</string>
     <string name="action_settings">Settings</string>
     <string name="IP">IP address</string>
     <string name="instructions">Go to web address:</string>
-    <string name="title">Quick Text</string>
+    <string name="title">Welcome to Browser Text</string>
 
     <color name="white">#FFFFFF</color>
     <color name="darkGreen">#27ae60</color>
+    <color name="darkBlue">#2c3e50</color>
 </resources>

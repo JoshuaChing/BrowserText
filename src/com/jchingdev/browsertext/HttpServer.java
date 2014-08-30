@@ -1,4 +1,4 @@
-package com.jchingdev.quicktext;
+package com.jchingdev.browsertext;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;

@@ -1,4 +1,6 @@
-package com.jchingdev.jcontrol;
+package com.jchingdev.browsertext;
+
+import com.jchingdev.jcontrol.R;
 
 import android.os.Bundle;
 import android.app.Activity;

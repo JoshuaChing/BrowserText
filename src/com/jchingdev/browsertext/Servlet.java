@@ -1,4 +1,4 @@
-package com.jchingdev.jcontrol;
+package com.jchingdev.browsertext;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,6 +18,10 @@ public class Servlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 6018370847996819359L;
 
+	
+	////BELOW IS A VERY BRUTE FORCE WAY OF PROVIDING OUTPUT TO THE USER, WOULD NOT RECOMMEND FOR PRODUCTION PROJECTS////
+	////(this is just a practice/demo sort of application)////
+	
 	//method called when user enters URL
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
@@ -28,32 +32,23 @@ public class Servlet extends HttpServlet{
 		(
 				"<html style='background-color:#2c3e50'>" +
 				"<head>" +
-				"	<title>jControl</title>" +
-				"	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>" +
-				"	<script>" +
-				"		$(document).ready(function(){" +
-				"			$('#updateTime').click(function(){" +
-				"				$.post('http://192.168.0.17:8080/', null, function(newTime){" + //need to get proper IP
-				"					$('time').text(newTime);" +
-				"					alert('clicked');" +
-				"				});" +
-				"			});" +
-				"		});" +
-				"	</script>" +
+				"	<title>Quick Text</title>" +
 				"</head>" +
 				"<body style='color:#FFFFFF;font-family:Verdana'>" +
 				"	<center>" +
-				"		<h1>Welcome to jControl</h1>" +
+				"		<h1>Welcome to Browser Text</h1>" +
 				"		<p>" +
-				"			Last updated: <div id='time'>" + (new java.util.Date()) + "</div>" +
-				"			<button id='updateTime'>Update Time</button>" +
+				"			Last updated: " + (new java.util.Date()) +
+				//"			<form method='post'> <input type='submit' name='useless' value='useless'/> </form>" +
 				"		</p>" +
+				"		</br>"+
 				"		<h3>Hardware Information</h3>" +
 				"		<p>" +
 				"			ID: "+Build.ID+"<br>" +
 				"			Model Number: "+Build.MODEL+"<br>" +
 				"			Android SDK: "+Build.VERSION.SDK_INT+"<br>" +
 				"		</p>" +
+				"		</br>"+
 				"		<h3>Send a text message</h3>" +
 				"		<form method='post'>" +
 				"			Phone #: <input type='text' name='phoneNumber'/> <br>" +
@@ -73,20 +68,46 @@ public class Servlet extends HttpServlet{
 		resp.setStatus(HttpServletResponse.SC_OK);
 		PrintWriter out=resp.getWriter();
 		
+		out.println(
+				"<html style='background-color:#2c3e50'>" +
+					"<head>" +
+					"	<title>Quick Text</title>" +
+					"</head>" +
+					"<body style='color:#FFFFFF;font-family:Verdana'>" +
+					"	<center>" +
+					"		<h1>Welcome to Quick Text</h1>" +
+					"		<p>" +
+					"			Last updated: " + (new java.util.Date())
+		);
+		
 		if (req.getParameter("send") != null){
 			String phoneNumber=req.getParameter("phoneNumber");
 			String message=req.getParameter("message");
 			String numberOfTexts= req.getParameter("numberOfTexts");
 			if(phoneNumber==null || message==null || phoneNumber=="" ||message=="" || numberOfTexts==null || numberOfTexts=="") {
-				out.println("<h1>Invalid input</h1>");
+				out.println(
+							"			<h3>Invalid input. Please try again.</h3>"
+							);
 			}else{
 				sendSMS(phoneNumber, message, Integer.parseInt(numberOfTexts));
-				out.println("<h1>\""+message+"\"sent to "+phoneNumber+" ");
+				out.println(
+							"			<h3> \""+message+"\" sent to " + phoneNumber + " a total of " + numberOfTexts + " time(s) </h3>"
+							);
 			}	
 		}
-		else if (req.getParameter("updateTime") != null){
-			out.println(new java.util.Date());
-		}
+		/*else if (req.getParameter("useless") != null){
+			out.println(
+				"			<h3>Why did you click this button?</h3>"
+				);
+		}*/
+		
+		out.println(
+				"		</p>" +
+						"	</center>" +
+						"</body>" +
+					"</html>" 
+						);
+		
 	}
 	
 	//method for sending sms
