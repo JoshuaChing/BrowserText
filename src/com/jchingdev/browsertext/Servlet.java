@@ -32,7 +32,7 @@ public class Servlet extends HttpServlet{
 		(
 				"<html style='background-color:#2c3e50'>" +
 				"<head>" +
-				"	<title>Quick Text</title>" +
+				"	<title>Browser Text</title>" +
 				"</head>" +
 				"<body style='color:#FFFFFF;font-family:Verdana'>" +
 				"	<center>" +
